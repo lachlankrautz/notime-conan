@@ -4,7 +4,7 @@ import os, shutil
 
 
 class SDLConanFile(ConanFile):
-    name = "sdl"
+    name = "sdl_reference"
     version = "2.0.9"
     branch = "stable"
     settings = "os", "compiler", "arch", "build_type"

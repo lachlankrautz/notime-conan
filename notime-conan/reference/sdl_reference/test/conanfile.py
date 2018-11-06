@@ -9,7 +9,7 @@ class SDLTestConanFile(ConanFile):
     version = "1.0"
     settings = "os", "compiler", "arch", "build_type"
     generators = "cmake"
-    requires = "sdl/2.0.4@%s/%s" % (username, channel)
+    requires = "sdl_reference/2.0.4@%s/%s" % (username, channel)
 
     def config(self):
         del self.settings.compiler.libcxx
