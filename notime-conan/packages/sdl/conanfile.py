@@ -12,7 +12,7 @@ class SDLConanFile(ConanFile):
     default_options = ("shared=True", "gles=False")
     generators = "cmake"
     # license = "zlib/png"
-    url = "http://github.com/lachlankrautz/conan-packages"
+    url = "http://github.com/lachlankrautz/notime-conan"
     exports = ["CMakeLists.txt"]
     full_version = 'SDL2-2.0.9'
 

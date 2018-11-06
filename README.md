@@ -27,7 +27,7 @@ Give examples
 
 * **Lachlan Krautz** - [PurpleBooth](https://github.com/lachlankrautz)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/lachlankrautz/notime-conan/contributors) who participated in this project.
 
 ## License
 
