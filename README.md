@@ -1,6 +1,6 @@
-# conan-packages
+# notime-conan
 
-A collection of conan packages
+Notime collection of conan packages
 
 ## Getting Started
 
@@ -25,7 +25,7 @@ Give examples
 
 ## Authors
 
-* **Lachlan Krautz** - [PurpleBooth](https://github.com/lachlankrautz)
+* [Lachlan Krautz](https://github.com/lachlankrautz)
 
 See also the list of [contributors](https://github.com/lachlankrautz/notime-conan/contributors) who participated in this project.
 
