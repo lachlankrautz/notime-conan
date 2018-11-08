@@ -4,17 +4,18 @@ import os, shutil
 
 
 class SDLConanFile(ConanFile):
-    name = "sdl_reference"
-    version = "2.0.9"
+    name = "sdl"
+    version = "2.0.4"
     branch = "stable"
     settings = "os", "compiler", "arch", "build_type"
     options = {"shared": [True, False], "gles": [True, False]}
     default_options = ("shared=True", "gles=False")
     generators = "cmake"
-    # license = "zlib/png"
-    url = "http://github.com/lachlankrautz/notime-conan"
+    license = "zlib/png"
+    url = "http://github.com/chaosteil/conan-sdl"
     exports = ["CMakeLists.txt"]
-    full_version = 'SDL2-2.0.9'
+    mercurial_archive = "330f500d5815"
+    full_version = 'SDL2-2.0.4'
 
 
     def config(self):
@@ -23,10 +24,10 @@ class SDLConanFile(ConanFile):
 
     def source(self):
         zip_name = "%s.zip" % self.full_version
-        download("https://www.libsdl.org/release/%s" % zip_name, zip_name)
+        # download("https://www.libsdl.org/release/%s" % zip_name, zip_name)
         # We use this mercurial package because it fixes a critical build error
         # on the latest Arch linux. Remove once SDL 2.0.5 is released.
-        # download("https://hg.libsdl.org/SDL/archive/%s.zip" % self.mercurial_archive, zip_name)
+        download("https://hg.libsdl.org/SDL/archive/%s.zip" % self.mercurial_archive, zip_name)
         check_sha256(zip_name, 'dd2816bd7551ed206a8687dad224d3651522551dd3669a97ed820ba641f89a51')
         unzip(zip_name)
         os.unlink(zip_name)

@@ -22,4 +22,4 @@ class HelloTestConan(ConanFile):
     def test(self):
         if not tools.cross_building(self.settings):
             os.chdir("bin")
-            self.run(".%sexample" % os.sep, True, None, os_info.is_windows)
+            self.run(".%sexample%s" % (os.sep, ".exe" if os_info.is_windows else ""))

@@ -4,7 +4,7 @@ from conans.client.tools.oss import os_info
 
 
 class SdlConan(ConanFile):
-    name = "hello"
+    name = "sdl"
     version = "2.0.9"
     license = "MIT"
     author = "Lachlan Krautz lachlan.krautz@gmail.com"
