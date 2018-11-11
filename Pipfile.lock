@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9fc2cbaf1f7c1135acd9b9f4ebc71a88a4ef25d3bc2558fd55b7f8eb172c0c0b"
+            "sha256": "cd4bea45aaf1831b2fab2cb36cae3866a2eb02401dd2f791dccbccb044287131"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -92,15 +92,15 @@
                 "sha256:463f8483208e921368c9f306094eb6f725c6ca42b0f97e313cb5d5512459feda",
                 "sha256:48eb22f4f8461b1df5734a074b57042430fb06e1d61bd1e11b078c0fe6d7a1f1"
             ],
-            "markers": "sys_platform == 'win32'",
+            "index": "pypi",
             "version": "==0.3.9"
         },
         "conan": {
             "hashes": [
-                "sha256:8fbdd71837da03b54695a0154fcbc8a9e584b7b876a9b3ad1253a917784f3bbf"
+                "sha256:ce42e073ba54ce17da3534d0a5a751a5a04b31b54fa8f5cdc1137182f44dc656"
             ],
             "index": "pypi",
-            "version": "==1.9.0"
+            "version": "==1.9.1"
         },
         "conan-package-tools": {
             "hashes": [
@@ -314,10 +314,10 @@
                 "security"
             ],
             "hashes": [
-                "sha256:99dcfdaaeb17caf6e526f32b6a7b780461512ab3f1d992187801694cba42770c",
-                "sha256:a84b8c9ab6239b578f22d1c21d51b696dcfe004032bb80ea832398d6909d7279"
+                "sha256:65b3a120e4329e33c9889db89c80976c5272f56ea92d3e74da8a463992e3ff54",
+                "sha256:ea881206e59f41dbd0bd445437d792e43906703fff75ca8ff43ccdb11f33f263"
             ],
-            "version": "==2.20.0"
+            "version": "==2.20.1"
         },
         "six": {
             "hashes": [

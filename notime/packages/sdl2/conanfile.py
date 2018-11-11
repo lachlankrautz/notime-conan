@@ -1,3 +1,4 @@
+import os
 from conans import ConanFile, tools, AutoToolsBuildEnvironment
 from conans.tools import download, unzip
 from conans.client.tools.oss import os_info
@@ -23,11 +24,11 @@ class SdlConan(ConanFile):
     generators = "cmake"
     folder = "SDL2-%s" % version
 
-
     def source(self):
         zip_name = "%s.zip" % self.folder
         download("https://www.libsdl.org/release/%s" % zip_name, zip_name)
         unzip(zip_name)
+        os.chmod("%s/configure" % self.folder, 0o755)
 
     def build(self):
         with tools.chdir(self.folder):

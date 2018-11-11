@@ -7,8 +7,9 @@ name = "pypi"
 python_version = "3.7"
 
 [packages]
-conan = ">=1.9.0"
-conan_package_tools = ">=0.20.0"
+conan = ">=1.9"
+conan_package_tools = ">=0.20"
 idna = ">=2.6"
+colorama = ">=0.3"
 
 [dev-packages]
