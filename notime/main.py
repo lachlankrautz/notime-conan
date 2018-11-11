@@ -1,16 +1,26 @@
 import os
+import sys
 
 from conans.client.conan_api import ConanAPIV1
 
+api, _, _ = ConanAPIV1.factory()
+
 
 def run():
-    directory = os.fsencode("packages")
-    api, _, _ = ConanAPIV1.factory()
+    if sys.argv[1:]:
+        create(sys.argv[1])
+        return
 
+    directory = os.fsencode("packages")
     for file in os.listdir(directory):
-        filename = os.fsdecode(file)
-        api.create("packages/%s" % filename, user="notime", channel="testing")
+        create(os.fsdecode(file))
         print("\n-------------------\n")
+
+
+def create(name):
+    # api.create("packages/%s" % name, user="notime", channel="testing")
+    # api.create("packages/%s" % name, user="notime", channel="testing", keep_source=True)
+    api.create("packages/%s" % name, user="notime", channel="testing", keep_source=True, keep_build=True)
 
 
 if __name__ == '__main__':
