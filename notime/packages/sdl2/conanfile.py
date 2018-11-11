@@ -50,6 +50,6 @@ class SdlConan(ConanFile):
             # not sure if needed
             # self.cpp_info.cppflags.append("-pthread")
             if not self.options.windows_console:
-                self.cpp_info.cppflags.append("-mwindows")
+                self.cpp_info.exelinkflags.append("-mwindows")
 
         self.cpp_info.libs.extend(["SDL2main", "SDL2"])

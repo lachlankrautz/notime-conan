@@ -18,9 +18,7 @@ def run():
 
 
 def create(name):
-    # api.create("packages/%s" % name, user="notime", channel="testing")
-    # api.create("packages/%s" % name, user="notime", channel="testing", keep_source=True)
-    api.create("packages/%s" % name, user="notime", channel="testing", keep_source=True, keep_build=True)
+    api.create("packages/%s" % name, user="notime", channel="stable")
 
 
 if __name__ == '__main__':
