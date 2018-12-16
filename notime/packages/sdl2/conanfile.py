@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from conans import ConanFile, CMake, tools
+from conans import ConanFile, CMake, tools, AutoToolsBuildEnvironment
 from conans.errors import ConanInvalidConfiguration
 import os
 
@@ -20,6 +20,7 @@ class SDL2Conan(ConanFile):
     generators = ['cmake']
     _source_subfolder = "source_subfolder"
     _build_subfolder = "build_subfolder"
+    _build_subfolder_autotools = "build_subfolder_autotools"
     settings = "os", "arch", "compiler", "build_type"
     options = {
         "shared": [True, False],
@@ -206,6 +207,12 @@ class SDL2Conan(ConanFile):
         tools.patch(base_path=self._source_subfolder, patch_file="cmake.patch")
 
     def build(self):
+        # configure with autotools even though we're building with cmake
+        # need to generate sdl-config
+        win_bash = tools.os_info.detect_windows_subsystem() == "msys2"
+        autotools = AutoToolsBuildEnvironment(self, win_bash=win_bash)
+        autotools.configure(configure_dir=self._source_subfolder)
+
         if self.settings.compiler == 'Visual Studio':
             with tools.vcvars(self.settings, filter_known_paths=False):
                 self.build_cmake()
@@ -280,6 +287,10 @@ class SDL2Conan(ConanFile):
         cmake.build()
 
     def package(self):
+        win_bash = tools.os_info.detect_windows_subsystem() == "msys2"
+        sdl2_config = 'sdl2-config.exe' if (self.settings.os == 'Windows' and not win_bash) else 'sdl2-config'
+        self.copy(pattern=sdl2_config, dst="bin")
+
         cmake = self._configure_cmake()
         cmake.install(build_dir=self._build_subfolder)
         self.copy(pattern="COPYING.txt", dst="license", src=self._source_subfolder)
@@ -301,7 +312,8 @@ class SDL2Conan(ConanFile):
         del self.info.options.sdl2main
 
     def package_info(self):
-        sdl2_config = 'sdl2-config.exe' if self.settings.os == 'Windows' else 'sdl2-config'
+        win_bash = tools.os_info.detect_windows_subsystem() == "msys2"
+        sdl2_config = 'sdl2-config.exe' if (self.settings.os == 'Windows' and not win_bash) else 'sdl2-config'
         sdl2_config = os.path.join(self.package_folder, 'bin', sdl2_config)
         self.output.info('Creating SDL2_CONFIG environment variable: %s' % sdl2_config)
         self.env_info.SDL2_CONFIG = sdl2_config
